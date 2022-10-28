@@ -1,11 +1,14 @@
- 
- 
- 
+## Description
+
  
 
+<br>
+<br>
 <h3 align="center">
  Repository with tests on cypress made as first step for developer Q&A of LOLDesign selective process
 </h3>
+<br>
+<br>
 
 ## Built With
 
@@ -46,5 +49,9 @@ npx cypress open
 
 7. Select the specs that you want to run, and enjoy 🚀 :
 
-### Made for LolDesign by Rudá Rabello:
+## Made by:
 
+<table>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/ruda-rabello-da-silva/"><img src="https://avatars.githubusercontent.com/u/95311365?s=96&v=4" width="80px;" alt="Rudá Rabello"/><br /><sub><b>Rudá Rabello</b></sub></a><br /><a href="https://www.linkedin.com/in/ruda-rabello-da-silva/"title="Code">💻</a></td></td>
+</table>
