@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-describe(' Make login with known data ', () => {
+describe(' Make login with known data and verify products', () => {
     const login = {
         name: 'Walmir',
         email: 'walmir.lucena@loldesign.com.br',
