@@ -4,7 +4,7 @@ describe(' Make login with known data and verify products', () => {
     const login = {
         name: 'Walmir',
         email: 'walmir.lucena@loldesign.com.br',
-        senha: 'walmirAdmin123',
+        password: 'walmirAdmin123',
     };
     const product = {
         category: faker.name.firstName(),
@@ -14,7 +14,7 @@ describe(' Make login with known data and verify products', () => {
     it('Should make login with data sent by Floriza', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
@@ -24,7 +24,7 @@ describe(' Make login with known data and verify products', () => {
     it('Should enter on products and generate pdf', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
@@ -44,7 +44,7 @@ describe(' Make login with known data and verify products', () => {
     it('Should add a fake category', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
@@ -53,7 +53,9 @@ describe(' Make login with known data and verify products', () => {
         cy.contains('Produtos').click();
         cy.wait('@Products', { timeout: 15000 });
         cy.wait(5000);
-        cy.get('button').should('contain', 'Adicionar').last().click();
+        cy.get('table').within(() => {
+            cy.get('button').should('contain', 'Adicionar').last().click();
+        });
         cy.get('.modal-body').within(() => {
             cy.get("input[type='text']").type(product.category);
         });
@@ -63,7 +65,7 @@ describe(' Make login with known data and verify products', () => {
     it('Should add a fake product', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
