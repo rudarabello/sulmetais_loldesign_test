@@ -1,14 +1,14 @@
-describe(' Make login with known data ', () => {
+describe(' Make login with known data and verify users ', () => {
     const login = {
         name: 'Walmir',
         email: 'walmir.lucena@loldesign.com.br',
-        senha: 'walmirAdmin123',
+        password: 'walmirAdmin123',
     };
 
     it('Should be make login with data sent by Floriza', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
@@ -19,7 +19,7 @@ describe(' Make login with known data ', () => {
     it('Should be enter on Users', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
@@ -33,7 +33,7 @@ describe(' Make login with known data ', () => {
     it('Should be edit status of user ', () => {
         cy.visit('https://sulmetais-web-prod.loldesign.com.br/');
         cy.get("input[type='email']").type(login.email);
-        cy.get("input[type='password']").type(login.senha);
+        cy.get("input[type='password']").type(login.password);
         cy.intercept('POST', 'https://sulmetais-api-prod.loldesign.com.br/api/login').as('newLogin');
         cy.contains('Entrar').click();
         cy.wait('@newLogin', { timeout: 15000 });
